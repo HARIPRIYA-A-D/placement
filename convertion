@@ -1,0 +1,48 @@
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+    char str1[100];
+    char newString[10][10]; 
+    int i,j,ctr;
+
+    printf(" Input  a string : ");
+    fgets(str1, sizeof str1, stdin);	
+ 
+    j=0; ctr=0;
+    for(i=0;i<=(strlen(str1));i++)
+    {
+        if(str1[i]==' '||str1[i]=='\0')
+        {
+            newString[ctr][j]='\0';
+            ctr++;  
+            j=0;
+        }
+        else
+        {
+            newString[ctr][j]=str1[i];
+            j++;
+        }
+    }
+    for(int i=0;i<strlen(newString[0]);i++){
+        if(newString[0][i]=='a'||newString[0][i]=='o'||newString[0][i]=='u'||newString[0][i]=='e'||newString[0][i]=='i'){
+            newString[0][i]='*';
+        }
+    }
+    for(int i=0;i<strlen(newString[1]);i++){
+        if (newString[1][i] >= 'A' && newString[0][i] <= 'Z'){
+            newString[1][i]='#';
+        }
+    }
+    for(int i=0;i<strlen(newString[2]);i++){
+        for (i = 0; newString[1][i]!='\0'; i++) {
+      if(newString[2][i] >= 'a' && newString[2][i] <= 'z') {
+         newString[2][i] = newString[2][i] -32;
+      }
+   }
+    }
+    printf("\n Strings or words after split by space are :\n");
+    for(i=0;i < ctr;i++)
+        printf(" %s\n",newString[i]);
+    return 0;
+}
